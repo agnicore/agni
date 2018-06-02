@@ -1,0 +1,23 @@
+*.txt eol=lf
+*.md eol=lf
+*.java eol=lf
+*.cs eol=lf
+*.js eol=lf
+*.css eol=lf
+*.htm eol=lf
+*.html eol=lf
+*.less eol=lf
+*.ntc eol=lf
+*.erl eol=lf
+*.hrl eol=lf
+*.csproj eol=lf
+*.sln eol=lf
+*.xml=lf
+*.laconf=lf
+*.json=lf
+*.yml=lf
+*.rschema=lf
+
+*.cmd eol=crlf
+
+#text eol=lf

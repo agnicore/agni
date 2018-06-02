@@ -1,0 +1,11 @@
+version: 5.0.{build}
+image: Visual Studio 2017
+configuration: Release
+build:
+  verbosity: minimal
+
+before_build:
+  - cd .\src
+  - nuget restore  
+##for now disable tests
+test: off
