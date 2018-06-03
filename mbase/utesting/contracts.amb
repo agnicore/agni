@@ -1,0 +1,86 @@
+//this is file contains contract resolution and setup
+contracts
+{
+  service-client-hub
+  {
+    |*
+    map
+    {
+      client-contract="...type specification..."
+      local //used if caller and callee are in the same NOC
+      {
+          implementor="...type specification..."
+          service="...service name..."
+          net="...network name..."
+          binding="...binding name..."
+          call-timeout-ms=12000
+          reserve-transport=false
+          options { }
+      }
+
+      global //used if caller and callee are in different NOCs
+      {
+          implementor="...type specification..."
+          service="...service name..."
+          net="...network name..."
+          binding="...binding name..."
+          call-timeout-ms=12000
+          reserve-transport=false
+          options { }
+      }
+    }
+    *|
+
+    map
+    {
+      client-contract="Agni.Contracts.ITodoQueueClient, Agni"
+      implementor="Agni.Clients.TodoQueue, Agni"
+      net=$(~SysConsts.NETWORK_INTERNOC)
+    }
+
+    map
+    {
+      client-contract="Agni.Contracts.IGDIDAuthorityClient, Agni"
+      implementor="Agni.Clients.GDIDAuthority, Agni"
+      service=$(~SysConsts.NETWORK_SVC_GDID_AUTHORITY)
+      net=$(~SysConsts.NETWORK_INTERNOC)
+    }
+
+    map
+    {
+      client-contract="Agni.Contracts.IRemoteTerminalClient, Agni"
+      implementor="Agni.Clients.RemoteTerminal, Agni"
+      net=$(~SysConsts.NETWORK_INTERNOC)
+    }
+
+    map
+    {
+      client-contract="Agni.Contracts.IZoneHostRegistryClient, Agni"
+      implementor="Agni.Clients.ZoneHostRegistry, Agni"
+      service=$(~SysConsts.NETWORK_SVC_ZGOVHOSTREG)
+    }
+
+    map
+    {
+      client-contract="Agni.Contracts.IZoneLogReceiverClient, Agni"
+      implementor="Agni.Clients.ZoneLogReceiver, Agni"
+      service=$(~SysConsts.NETWORK_SVC_ZGOVLOG)
+    }
+
+    map
+    {
+      client-contract="Agni.Contracts.IZoneTelemetryReceiverClient, Agni"
+      implementor="Agni.Clients.ZoneTelemetryReceiver, Agni"
+      service=$(~SysConsts.NETWORK_SVC_ZGOVTELEMETRY)
+    }
+
+    map
+    {
+      client-contract="Agni.Contracts.ITesterClient, Agni"
+      implementor="Agni.Clients.Tester, Agni"
+      service=$(~SysConsts.NETWORK_SVC_TESTER)
+      net=$(~SysConsts.NETWORK_UTESTING)
+      binding=$(~SysConsts.SYNC_BINDING)
+    }
+  }
+}

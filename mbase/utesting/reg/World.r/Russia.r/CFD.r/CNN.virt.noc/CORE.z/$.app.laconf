@@ -1,0 +1,10 @@
+application
+{
+  agni
+  {
+    zone
+    {
+      _override="fail"
+    }
+  }
+}

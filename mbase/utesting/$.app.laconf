@@ -1,0 +1,260 @@
+application
+{
+  _override="all"
+  app-name="Undefined"
+  trace-disable=true
+
+  _include //test
+  {
+    provider
+    {
+      file="/includes/test.laconf"
+      type="Agni.Metabase.MetabankFileConfigNodeProvider, Agni"
+    }
+  }
+
+  gv //contains global application container variables
+  {
+    _override="fail"
+    a="A"
+    b="B"
+
+    paths
+    {
+      home-root=$(~AGNI_HOME_ROOT)
+      disk-root=$(~AGNI_HOME_ROOT)disk\
+      log-root=$($disk-root)
+      gdid-root=$($disk-root)gdid
+    }
+
+    types //Provider Types for log, glue, instrumentation etc.
+    {
+      srv-todo-queue="Agni.Workers.Server.Queue.TodoQueueServer, Agni"
+
+      log-csv="NFX.Log.Destinations.CSVFileDestination, NFX"
+      glue-async="NFX.Glue.Native.MpxBinding"
+      glue-sync="NFX.Glue.Native.SyncBinding"
+      glue-apterm="Agni.Glue.AppTermBinding, Agni"
+      sec-config="NFX.Security.ConfigSecurityManager, NFX"
+      volatile-file="NFX.ApplicationModel.Volatile.FileObjectStoreProvider"
+      instr-telemetry="NFX.Instrumentation.Telemetry.TelemetryInstrumentationProvider"
+      instr-nop="NFX.Instrumentation.NOPInstrumentationProvider"
+      mb-fs="Agni.Metabase.MetabankFSView, Agni"
+      
+      trendingsystem="Agni.Social.Trending.Server.TrendingSystemService, Agni.Social"
+      trendingsystem-receiver="Agni.Social.Trending.Server.TrendingSystemServer, Agni.Social"
+      trendingsystem-mongovolume="Agni.MongoDB.Social.Trending.MongoDBVolume, Agni.MongoDB.Social"
+
+      graphnodesystem="Agni.Social.Graph.Server.GraphSystemService, Agni.Social"
+      graphnodesystem-receiver="Agni.Social.Graph.Server.GraphNodeSystemServer, Agni.Social"
+
+      grapheventsystem="Agni.Social.Graph.Server.GraphSystemService, Agni.Social"
+      grapheventsystem-receiver="Agni.Social.Graph.Server.GraphEventSystemServer, Agni.Social"
+
+      graphcommentsystem="Agni.Social.Graph.Server.GraphSystemService, Agni.Social"
+      graphcommentsystem-receiver="Agni.Social.Graph.Server.GraphCommentSystemServer, Agni.Social"
+    }
+
+    services
+    {
+      web-zgov=$(~SysConsts.DEFAULT_ZONE_GOV_WEB_PORT)
+      sync-zgov=$(~SysConsts.DEFAULT_ZONE_GOV_SVC_SYNC_PORT)
+      zgov-appterm=$(~SysConsts.DEFAULT_ZONE_GOV_APPTERM_PORT)
+      async-zgov=$(~SysConsts.DEFAULT_ZONE_GOV_SVC_ASYNC_PORT)
+      sync-zgov-telemetry=$(~SysConsts.NETWORK_SVC_ZGOVTELEMETRY_SYNC_PORT)
+      async-zgov-telemetry=$(~SysConsts.NETWORK_SVC_ZGOVTELEMETRY_ASYNC_PORT)
+
+      web-hgov=$(~SysConsts.DEFAULT_HOST_GOV_WEB_PORT)
+      sync-hgov=$(~SysConsts.DEFAULT_HOST_GOV_SVC_SYNC_PORT)
+      hgov-appterm=$(~SysConsts.DEFAULT_HOST_GOV_APPTERM_PORT)
+      async-hgov=$(~SysConsts.DEFAULT_HOST_GOV_SVC_ASYNC_PORT)
+      
+
+      web-gdid=$(~SysConsts.DEFAULT_GDID_AUTH_WEB_PORT)
+      sync-gdid=$(~SysConsts.DEFAULT_GDID_AUTH_SVC_SYNC_PORT)
+      gdid-appterm=$(~SysConsts.DEFAULT_GDID_AUTH_APPTERM_PORT)
+      async-gdid=$(~SysConsts.DEFAULT_GDID_AUTH_SVC_ASYNC_PORT)
+      
+      web-ph=$(~SysConsts.DEFAULT_PH_WEB_PORT)
+      sync-ph=$(~SysConsts.DEFAULT_PH_SVC_SYNC_PORT)
+      ph-appterm=$(~SysConsts.DEFAULT_PH_APPTERM_PORT)
+      async-ph=$(~SysConsts.DEFAULT_PH_SVC_ASYNC_PORT)
+      
+      web-aws=$(~SysConsts.DEFAULT_AWS_WEB_PORT)
+      sync-aws=$(~SysConsts.DEFAULT_AWS_SVC_SYNC_PORT)
+      aws-appterm=$(~SysConsts.DEFAULT_AWS_APPTERM_PORT)
+      async-aws=$(~SysConsts.DEFAULT_AWS_SVC_ASYNC_PORT)
+      
+      sync-telemetry=$(~SysConsts.DEFAULT_TELEMETRY_SYNC_PORT)
+      async-telemetry=$(~SysConsts.DEFAULT_TELEMETRY_ASYNC_PORT)
+      
+      sync-trending=27300
+      async-trending=27301
+      
+      sync-graphnode=27600
+      async-graphnode=27601
+
+      sync-graphevent=27700
+      async-graphevent=27701
+
+      sync-graphcomment=27900
+      async-graphcomment=27901
+      
+      sync-todoqueue=27800
+      async-todoqueue=27801
+    }
+  }
+
+  instrumentation
+  {
+    name="Instruments"
+    interval-ms="4395"
+    self-instrumented=true
+
+    provider
+    {
+      name="Telemetry Instrumentation Provider"
+      type=$(/gv/types/$instr-nop)
+    }
+    /*provider
+    {
+      name="Telemetry Instrumentation Provider"
+      type=$(/gv/types/$instr-telemetry)
+      use-log="false"
+      receiver-node="sync://127.0.0.1:$(/gv/services/$sync-telemetry)"
+    }*/
+  }
+
+
+  object-store
+  {
+    object-life-span-ms="180000"
+    bucket-count="1024"
+
+    provider
+    {
+      name="Disk Object Store Provider"
+      type=$(/gv/types/$volatile-file)
+      load-limit="0"
+      root-path=$(/gv/paths/$disk-root)
+      //format="msbinary"
+    }
+  }
+
+  glue
+  {
+    bindings
+    {
+      binding { name=$(~SysConsts.ASYNC_BINDING)  type=$(/gv/types/$glue-async) }
+      binding { name=$(~SysConsts.SYNC_BINDING)   type=$(/gv/types/$glue-sync) }
+      binding { name=$(~SysConsts.APTERM_BINDING) type=$(/gv/types/$glue-apterm) }
+    }
+  }//glue
+
+  security
+  {
+    type=$(/gv/types/$sec-config)
+
+    users
+    {
+      user
+      {
+        name="Dima"
+        description="D Kh"
+        status="User" //System grants everything
+        id="dima"
+        password='{"algo":"MD5","fam":"Text","hash":"ZcrDK120Iwj08Qqfzvz95w==","salt":"e0K7BA4Ylby2kWAp3nCR3A9jSw=="}'//thejake
+        rights
+        {
+          Agni{Security{Permissions{Admin{
+            AppRemoteTerminal{ level=1 }
+            RemoteTerminalOperator{ level=1 }
+          }}}}
+        }
+      }
+    }//users
+  }//security
+
+  web-manager
+  {
+    enabled=true
+    instrumentation-enabled=true
+    default-error-handler { show-dump { match{name=all} } log {  match{name=all} } }
+    gate { name="AWM Gate" enabled = false }
+
+    dispatcher
+    {
+      filter
+      { name="Errors" order=10 type="NFX.Wave.Filters.ErrorFilter, NFX.Wave"
+        show-dump { match { /*is-local=true*/ } }
+        log { match { var{name="WWW" default="Request Error"} } }
+        security-redirect-url="/login"
+      }
+
+      // Static Handlers
+      handler
+      {
+        name="Stock Content Embedded Site"
+        order=1000
+        cache-control { max-age-sec=86400 }
+        type="NFX.Wave.Handlers.StockContentSiteHandler, NFX.Wave"
+        match { path="/static/stock/{*path}"}
+      }
+
+      handler
+      {
+        name="AWM Content Embedded Site"
+        order=2000
+        cache-control { max-age-sec=86400 }
+        type="Agni.WebManager.AWMStockContentSiteHandler, Agni"
+        match { path="static/{*path}"}
+      }
+
+      handler
+      {
+        name="Public MVC API"
+        order=3000
+        type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
+        type-location { name="local" assembly="Agni.dll" ns{ name="Agni.WebManager.Controllers"} }
+        match { order=1 path="pub-api/{mvc-action}" var{query-name="*"} var{name="type" default="PublicAPI"} }
+      }
+
+      handler
+      {
+        name="Dynamic Content"
+        order=4000
+        type="NFX.Wave.Handlers.CompositeHandler, NFX.Wave"
+        match {name="Any MVC"}
+
+        filter
+        {
+          name="Sessions" order=10 type="Agni.WebManager.AWMSessionFilter, Agni"
+          session-timeout-ms="600000"
+          session-cookie-name="AWM.Session"
+        }
+
+        filter
+        {
+          name="Security" order=20 type="NFX.Wave.Filters.SecurityFilter, NFX.Wave"
+          bypass {    match{ path="/login"}    }
+
+          permissions
+          {
+            permission { type="Agni.Security.Permissions.Admin.RemoteTerminalOperatorPermission, Agni" }
+            permission { type="Agni.Security.Permissions.Admin.AppRemoteTerminalPermission, Agni" }
+          }
+        }
+
+        handler
+        {
+          name="MVC"
+          order=10000
+          type="NFX.Wave.Handlers.MVCHandler, NFX.Wave"
+          type-location { name="local" assembly="Agni.dll" ns{ name="Agni.WebManager.Controllers"} }
+          match { name="Typed" order=1 path="mvc/{type}/{mvc-action}" var{query-name="*"} }
+          match { name="Home" order=2 path="{mvc-action}" var{query-name="*"} var{name="type" default="Home"} }
+        }
+      }
+    }
+  }//web-manager
+}
