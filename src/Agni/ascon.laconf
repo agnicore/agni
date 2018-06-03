@@ -1,0 +1,26 @@
+﻿nfx
+{
+  app-name="ascon"
+  log-csv="NFX.Log.Destinations.CSVFileDestination, NFX"
+  log-debug="NFX.Log.Destinations.DebugDestination, NFX"
+  debug-default-action="LogAndThrow"
+  trace-disable=true
+
+  log
+  {
+    name="Logger"
+    destination { type=$(/$log-csv) name="ascon" path="" file-name="{0:yyyyMMdd}-$($name).csv.log" }
+  }
+
+  glue
+  {
+    client-log-level="Error"
+
+    bindings
+    {
+      binding { name="apterm" type="Agni.Glue.AppTermBinding, Agni" }
+      binding { name="async" type="NFX.Glue.Native.MpxBinding" }
+      binding { name="sync" type="NFX.Glue.Native.SyncBinding" }
+    }
+  }
+}//nfx

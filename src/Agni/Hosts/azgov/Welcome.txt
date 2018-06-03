@@ -1,0 +1,6 @@
+﻿<push><b color=black><f color=white>
+Agni Zone Governor<f color=gray>
+Copyright (c) 2016-2018 Agnicore Inc.
+Version 5.0 / Jan 21 2018
+
+<pop>

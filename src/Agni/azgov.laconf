@@ -1,0 +1,10 @@
+﻿boot
+{
+  _include { name=agni file=$(~AGNI_BOOT_CONF_FILE) }
+
+  log
+  {
+    name="BootLogger" reliable="true"
+    destination { type="NFX.Log.Destinations.CSVFileDestination, NFX" name="azgov.BootLog" path="$(/agni/log-root)" file-name="{0:yyyyMMdd}-$($name).csv.log" }
+  }
+}

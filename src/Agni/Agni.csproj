@@ -1,0 +1,115 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Agni OS Main Assembly</Description>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\out\Debug\</OutputPath>
+    <DocumentationFile>..\..\out\Debug\Agni.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\out\Release\</OutputPath>
+    <DocumentationFile>..\..\out\Release\Agni.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="$(ProjectDir)pre-build $(SolutionDir) $(ConfigurationName)" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="$(ProjectDir)post-build $(SolutionDir) $(ConfigurationName)" />
+  </Target>
+
+  <ItemGroup>
+    <None Remove="BUILD_INFO.txt" />
+    <None Remove="Hosts\agdida\Welcome.txt" />
+    <None Remove="Hosts\ahgov\Welcome.txt" />
+    <None Remove="Hosts\aph\Welcome.txt" />
+    <None Remove="Hosts\ash\Welcome.txt" />
+    <None Remove="Hosts\aws\Welcome.txt" />
+    <None Remove="Hosts\azgov\Welcome.txt" />
+    <None Remove="Tools\agm\Help.txt" />
+    <None Remove="Tools\agm\Welcome.txt" />
+    <None Remove="Tools\amm\Help.txt" />
+    <None Remove="Tools\amm\Welcome.txt" />
+    <None Remove="Tools\ascon\Help.txt" />
+    <None Remove="Tools\ascon\Welcome.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="BUILD_INFO.txt" />
+    <EmbeddedResource Include="Hosts\agdida\Welcome.txt" />
+    <EmbeddedResource Include="Hosts\ahgov\Welcome.txt" />
+    <EmbeddedResource Include="Hosts\aph\Welcome.txt" />
+    <EmbeddedResource Include="Hosts\ash\Welcome.txt" />
+    <EmbeddedResource Include="Hosts\aws\Welcome.txt" />
+    <EmbeddedResource Include="Hosts\azgov\Welcome.txt" />
+    <EmbeddedResource Include="Tools\agm\Help.txt" />
+    <EmbeddedResource Include="Tools\agm\Welcome.txt" />
+    <EmbeddedResource Include="Tools\amm\Help.txt" />
+    <EmbeddedResource Include="Tools\amm\Welcome.txt" />
+    <EmbeddedResource Include="Tools\ascon\Help.txt" />
+    <EmbeddedResource Include="Tools\ascon\Welcome.txt" />
+    <EmbeddedResource Include="WebManager\Site\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="WebManager\Pages\.tc\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NFX">
+      <HintPath>..\lib\nfx\NFX.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Wave">
+      <HintPath>..\lib\nfx\NFX.Wave.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Web">
+      <HintPath>..\lib\nfx\NFX.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="agdida.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="agm.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Agnivo.win.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ahgov.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="aph.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ascon-nolog.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ascon.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ash.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="aws.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="azgov.laconf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

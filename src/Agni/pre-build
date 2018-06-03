@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+SCRIPT=`realpath -s $0`
+SCRIPTPATH=`dirname $SCRIPT`
+
+SOLUTION_DIR=$1
+PROJECT_DIR=${SCRIPTPATH}/
+
+cp --force "${SOLUTION_DIR}lib/nfx/TelemetryViewer.exe"    "TelemetryViewer.exe"
+cp --force "${SOLUTION_DIR}lib/nfx/TelemetryViewer.laconf" "TelemetryViewer.laconf"
+cp --force "${SOLUTION_DIR}lib/nfx/ntc.exe"                "ntc.exe"
+cp --force "${SOLUTION_DIR}lib/nfx/gluec.exe"              "gluec.exe"
+cp --force "${SOLUTION_DIR}lib/nfx/rsc.exe"                "rsc.exe"
+cp --force "${SOLUTION_DIR}lib/nfx/buildinfo.exe"          "buildinfo.exe"
+cp --force "${SOLUTION_DIR}lib/nfx/phash.exe"              "phash.exe"
+cp --force "${SOLUTION_DIR}lib/nfx/NFX.dll"                "NFX.dll"
+cp --force "${SOLUTION_DIR}lib/nfx/NFX.MongoDB.dll"        "NFX.MongoDB.dll"
+cp --force "${SOLUTION_DIR}lib/nfx/MySql.Data.dll"         "MySql.Data.dll"
+cp --force "${SOLUTION_DIR}lib/nfx/NFX.MySQL.dll"          "NFX.MySQL.dll"
+
+mono buildinfo.exe > "${PROJECT_DIR}BUILD_INFO.txt"
+mono ntc.exe "${PROJECT_DIR}/WebManager/Pages/*.nht" -r -ext ".auto.cs" -src
