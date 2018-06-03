@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\out\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\out\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Agni\Agni.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NFX">
+      <HintPath>..\..\lib\nfx\NFX.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Wave">
+      <HintPath>..\..\lib\nfx\NFX.Wave.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Web">
+      <HintPath>..\..\lib\nfx\NFX.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
