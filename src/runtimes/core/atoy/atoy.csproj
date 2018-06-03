@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\..\out\Debug\run-core</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\..\out\Release\run-core</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Agni.Social\Agni.Social.csproj" />
+    <ProjectReference Include="..\..\..\Agni\Agni.csproj" />
+    <ProjectReference Include="..\..\..\providers\Agni.MongoDB.Social\Agni.MongoDB.Social.csproj" />
+    <ProjectReference Include="..\..\..\providers\Agni.MongoDB\Agni.MongoDB.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="arow">
+      <HintPath>..\..\..\lib\nfx\run-core\arow.dll</HintPath>
+    </Reference>
+    <Reference Include="buildinfo">
+      <HintPath>..\..\..\lib\nfx\run-core\buildinfo.dll</HintPath>
+    </Reference>
+    <Reference Include="getdatetime">
+      <HintPath>..\..\..\lib\nfx\run-core\getdatetime.dll</HintPath>
+    </Reference>
+    <Reference Include="gluec">
+      <HintPath>..\..\..\lib\nfx\run-core\gluec.dll</HintPath>
+    </Reference>
+    <Reference Include="inventory">
+      <HintPath>..\..\..\lib\nfx\run-core\inventory.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Erlang">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.Erlang.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.MongoDB">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.MongoDB.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.MySQL">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.MySQL.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.PAL.NetCore20">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.PAL.NetCore20.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Wave">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.Wave.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Web">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="ntc">
+      <HintPath>..\..\..\lib\nfx\run-core\ntc.dll</HintPath>
+    </Reference>
+    <Reference Include="phash">
+      <HintPath>..\..\..\lib\nfx\run-core\phash.dll</HintPath>
+    </Reference>
+    <Reference Include="rsc">
+      <HintPath>..\..\..\lib\nfx\run-core\rsc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

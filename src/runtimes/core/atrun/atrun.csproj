@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\..\out\Debug\run-core</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\..\out\Release\run-core</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Agni.Social\Agni.Social.csproj" />
+    <ProjectReference Include="..\..\..\Agni\Agni.csproj" />
+    <ProjectReference Include="..\..\..\providers\Agni.MongoDB.Social\Agni.MongoDB.Social.csproj" />
+    <ProjectReference Include="..\..\..\providers\Agni.MongoDB\Agni.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\testing\Agni.UTest\Agni.UTest.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NFX">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.PAL.NetCore20">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.PAL.NetCore20.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Tools">
+      <HintPath>..\..\..\lib\nfx\run-core\NFX.Tools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

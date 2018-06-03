@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BE837253-69E9-4EA6-8378-064EC9D0F9F1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>atrun</RootNamespace>
+    <AssemblyName>atrun</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\out\Debug\run-netf\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\out\Release\run-netf\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AG-Blue.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NFX">
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.PAL.NetFramework">
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.PAL.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Tools">
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Agni.Social\Agni.Social.csproj">
+      <Project>{6b91a6a4-63f2-49ae-980a-f2881c18abd2}</Project>
+      <Name>Agni.Social</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Agni\Agni.csproj">
+      <Project>{17d7250b-7ada-4652-b9c7-28eeed9e1c02}</Project>
+      <Name>Agni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\providers\Agni.MongoDB.Social\Agni.MongoDB.Social.csproj">
+      <Project>{086a5116-c486-4f53-9ea2-059deeef99df}</Project>
+      <Name>Agni.MongoDB.Social</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\providers\Agni.MongoDB\Agni.MongoDB.csproj">
+      <Project>{6c72adf9-6d46-4210-8eba-0ee29f304c93}</Project>
+      <Name>Agni.MongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\testing\Agni.UTest\Agni.UTest.csproj">
+      <Project>{4e256c61-c6ea-4efa-847c-8d87c4e133b4}</Project>
+      <Name>Agni.UTest</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AG-Blue.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

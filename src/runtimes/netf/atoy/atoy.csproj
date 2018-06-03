@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A2056273-7639-46CE-BD67-532B60B4A850}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>atoy</RootNamespace>
+    <AssemblyName>atoy</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <_HasReferenceToSystemRuntime>true</_HasReferenceToSystemRuntime>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\out\Debug\run-netf\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\out\Release\run-netf\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AG-Blue.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="arow">
+      <HintPath>..\..\..\lib\nfx\run-netf\arow.exe</HintPath>
+    </Reference>
+    <Reference Include="buildinfo">
+      <HintPath>..\..\..\lib\nfx\run-netf\buildinfo.exe</HintPath>
+    </Reference>
+    <Reference Include="getdatetime">
+      <HintPath>..\..\..\lib\nfx\run-netf\getdatetime.exe</HintPath>
+    </Reference>
+    <Reference Include="gluec">
+      <HintPath>..\..\..\lib\nfx\run-netf\gluec.exe</HintPath>
+    </Reference>
+    <Reference Include="inventory">
+      <HintPath>..\..\..\lib\nfx\run-netf\inventory.exe</HintPath>
+    </Reference>
+    <Reference Include="NFX, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Erlang">
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.Erlang.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.MongoDB, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.MongoDB.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.MySQL">
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.MySQL.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.PAL.NetFramework, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.PAL.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Wave, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.Wave.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.Web, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.WinForms, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\nfx\run-netf\NFX.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="ntc">
+      <HintPath>..\..\..\lib\nfx\run-netf\ntc.exe</HintPath>
+    </Reference>
+    <Reference Include="phash">
+      <HintPath>..\..\..\lib\nfx\run-netf\phash.exe</HintPath>
+    </Reference>
+    <Reference Include="rsc">
+      <HintPath>..\..\..\lib\nfx\run-netf\rsc.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Agni.Social\Agni.Social.csproj">
+      <Project>{6b91a6a4-63f2-49ae-980a-f2881c18abd2}</Project>
+      <Name>Agni.Social</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Agni\Agni.csproj">
+      <Project>{17d7250b-7ada-4652-b9c7-28eeed9e1c02}</Project>
+      <Name>Agni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\providers\Agni.MongoDB.Social\Agni.MongoDB.Social.csproj">
+      <Project>{086a5116-c486-4f53-9ea2-059deeef99df}</Project>
+      <Name>Agni.MongoDB.Social</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\providers\Agni.MongoDB\Agni.MongoDB.csproj">
+      <Project>{6c72adf9-6d46-4210-8eba-0ee29f304c93}</Project>
+      <Name>Agni.MongoDB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AG-Blue.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
