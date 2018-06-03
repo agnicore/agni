@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Agni OS - MongoDB functionality</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Agni\Agni.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NFX">
+      <HintPath>..\..\lib\nfx\NFX.dll</HintPath>
+    </Reference>
+    <Reference Include="NFX.MongoDB">
+      <HintPath>..\..\lib\nfx\NFX.MongoDB.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\out\Debug\</OutputPath>
+    <DocumentationFile>..\..\..\out\Debug\Agni.MongoDB.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\out\Release\</OutputPath>
+    <DocumentationFile>..\..\..\out\Release\Agni.MongoDB.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>
