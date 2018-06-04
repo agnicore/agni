@@ -21,6 +21,16 @@ Per definition of UNISTACK&reg; ideology - all code is written in **C#** and **J
 * **Database Sharding Router** - splis data into range partitions and then shards - supports any RDBMS or NoSQL as leaf nodes backend
 * **Key-Value Cluster Database** with expiration
 
+Agni includes a modeule called **Agni.Social** which provides a backbone for writing custom systems like Twitter/Facebook and the like which have much "social logic. It is important to put a stress on scalability - the social component uses Agni sharding, Processes and Todos executed in a cluster to serve trully unlimited number of clients.
+
+Social features:
+
+* **Social Graph Node** - cluster database solution for storing business entities (e.g. "friends", "groups", "rooms", "organizations" etc) and their relationships. The concrete systems provide **SocialGraphHost** implementations which map graph nodes to concrete business entities
+* Graph **node subscriptions** and **event delivery** - done in the cloud, e.g. the system can handle users with as low as a few to multi-multi million node subscriptions (think Facebook or Twitter)
+* Node "Friendship"
+* **Comment system** - voting like/dislike. Comments, Questions, Answers, Moderation
+* **Trending** - special-purpose OLAP engine harvesting, storing and querying data in real time, "top prodyucts in xyz category in the past week/month/year" etc.
+
 
 
 See [Agnicore Documentation Site](http://agnicore.com/products/agnios/book/introduction.htm) for more details
@@ -31,20 +41,20 @@ Agni is built on [NFX](https://github.com/agnicore/nfx); the whole stack is base
 
 Agni support on platforms is the same as for its base core library [NFX](https://github.com/agnicore/nfx) - **.NET Standard 2+** which works on different runtimes. Officially we support .NET Core and .NET Framework:
 
-    .NET Standard 2 - supported
-    .NET Core 2 - supported
-    .NET Framework 4.7.1 - supports classic .NET Framework 4.7.1+
+* .NET Standard 2 - supported
+* .NET Core 2 - supported
+* .NET Framework 4.7.1 - supports classic .NET Framework 4.7.1+
 
 NFX supports cross-platform development and is tested on:
 
-    Windows Win 2010 Core 2 and Net Fx
-    Linux Ubuntu 16 LTS using Core 2
-    Mac OS 14 using Core 2
+* Windows Win 2010 Core 2 and Net Fx
+* Linux Ubuntu 16 LTS using Core 2
+* Mac OS 14 using Core 2
 
 NFX Builds on:
 
-    Windows / MSBuild 15 / VS 2017
-    in process - *nix (need scripts and build process refinements)
+* Windows / MSBuild 15 / VS 2017
+* in process - *nix (need scripts and build process refinements)
 
 
 
