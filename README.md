@@ -11,7 +11,7 @@ According to UNISTACK&reg; ideology - all code is written only in **C#** and **J
 * **Hierarchy of geo-spread regions**, NOC, zones
 * **Host** and **zone** governor **supervisor processes**
 * Logical to physical addressing/**node name resolution**
-* **Hierarchical version-controlled configuration** engine; data mounted via Virtual File System (e.g. SVN, Web, RDBMS etc.)
+* **Hierarchical version-controlled configuration** engine; data mounted via Virtual File System (e.g. SVN, Web, RDBMS etc.) the configuration bank is called [**"The Metabase"**](mbase/)
 * **Global Distributed Unique ID** (GDID) generation - monotonic increasing integers
 * **Distributed lock manager** (DLM) - operates in hierarchical cluster allowing to coordinate tasks on the relevant level of hierarchy/scope
 * **WorkSets** - a set of virtual work which balances ietms a kin to C# Parallel.Foreach in cluster - automatically coordinates between nodes
@@ -21,7 +21,7 @@ According to UNISTACK&reg; ideology - all code is written only in **C#** and **J
 * **Database Sharding Router** - splis data into range partitions and then shards - supports any RDBMS or NoSQL as leaf nodes backend
 * **Key-Value Cluster Database** with expiration
 
-Agni includes a module called [**Agni.Social**](src/Agni.Social) - a core for custom systems like Twitter/Facebook which have much social network logic. It is important to mention  scalability - the social component uses Agni sharding, Processes and Todos executed in a cluster to serve a truly unlimited number of clients.
+Agni includes a module called [**Agni.Social**](src/Agni.Social) - a core for custom systems like Twitter/Facebook which have much social network logic. It is important to mention  scalability - the social component uses Agni sharding, Processes and Todos executed in a cluster to serve a truly unlimited number of clients/social profiles.
 
 Social features:
 
