@@ -12,14 +12,14 @@ According to UNISTACK&reg; ideology - all code is written only in **C#** and **J
 * **Host** and **zone** governor **supervisor processes**
 * Logical to physical addressing/**node name resolution**
 * **Hierarchical version-controlled configuration** engine; data mounted via Virtual File System (e.g. SVN, Web, RDBMS etc.) the configuration bank is called [**"The Metabase"**](mbase/)
-* **Global Distributed Unique ID** (GDID) generation - monotonic increasing integers
-* **Distributed lock manager** (DLM) - operates in hierarchical cluster allowing to coordinate tasks on the relevant level of hierarchy/scope
-* **WorkSets** - a set of virtual work which balances ietms a kin to C# Parallel.Foreach in cluster - automatically coordinates between nodes
-* **HostSets** - sets of workers providing balancing and sharding on topic/key
-* **Todo Queues** - queues of "serverless" Todo instances - similar to distributed Tasks
-* **Processes** - distributed contexts which coordinate Todo execution strands. Process exchange Signals to 
-* **Database Sharding Router** - splis data into range partitions and then shards - supports any RDBMS or NoSQL as leaf nodes backend
-* **Key-Value Cluster Database** with expiration
+* [**Global Distributed Unique ID**](src/Agni/Identification) (GDID) generation - monotonic increasing integers
+* [**Distributed lock manager**](src/Agni/Locking) (DLM) - operates in hierarchical cluster allowing to coordinate tasks on the relevant level of hierarchy/scope
+* [**WorkSets**](src/Agni/Coordination/WorkSet.cs) - a set of virtual work which coordinates item execution among multiple nodes - akin to **C# Parallel.Foreach in a cluster**
+* [**HostSets**](src/Agni/Coordination/HostSet.cs) - sets of workers providing balancing and sharding on topic/key
+* [**Todo Queues**](src/Agni/Workers/Todo.cs) - queues of "serverless" Todo instances - similar to distributed Tasks
+* [**Processes**](src/Agni/Workers/Process.cs) - distributed contexts which coordinate Todo execution strands. Process exchange Signals to 
+* [**Database Sharding Router**](src/Agni/MDB) - splis data into range partitions and then shards - supports any RDBMS or NoSQL as leaf nodes backend
+* [**Key-Value Cluster Database**](src/Agni/KDB) with expiration
 
 Agni includes a module called [**Agni.Social**](src/Agni.Social) - a core for custom systems like Twitter/Facebook which have much social network logic. It is important to mention  scalability - the social component uses Agni sharding, Processes and Todos executed in a cluster to serve a truly unlimited number of clients/social profiles.
 
