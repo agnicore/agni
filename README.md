@@ -21,7 +21,7 @@ According to UNISTACK&reg; ideology - all code is written only in **C#** and **J
 * **Database Sharding Router** - splis data into range partitions and then shards - supports any RDBMS or NoSQL as leaf nodes backend
 * **Key-Value Cluster Database** with expiration
 
-Agni includes a module called [**Agni.Social**](agnicore/agni/tree/master/src/Agni.Social) - a core for custom systems like Twitter/Facebook which have much social network logic. It is important to mention  scalability - the social component uses Agni sharding, Processes and Todos executed in a cluster to serve a truly unlimited number of clients.
+Agni includes a module called [**Agni.Social**](/agnicore/agni/tree/master/src/Agni.Social) - a core for custom systems like Twitter/Facebook which have much social network logic. It is important to mention  scalability - the social component uses Agni sharding, Processes and Todos executed in a cluster to serve a truly unlimited number of clients.
 
 Social features:
 
