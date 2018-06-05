@@ -25,11 +25,11 @@ Agni includes a module called [**Agni.Social**](src/Agni.Social) - a core for cu
 
 Social features:
 
-* [**Social Graph Node**](/agnicore/agni/tree/master/src/Agni.Social/Graph) - cluster database solution for storing business entities (e.g. "friends", "groups", "rooms", "organizations" etc) and their relationships. The concrete systems provide [**GraphHost**](agnicore/agni/blob/master/src/Agni.Social/Graph/Server/GraphHost.cs) implementations which map graph nodes to concrete business entities
-* Graph [**node subscriptions**](agnicore/agni/blob/master/src/Agni.Social/Graph/IGraphEventSystem.cs) and [**event delivery**](agnicore/agni/blob/master/src/Agni.Social/Graph/Server/GraphHost.cs#L33) - done in the cloud, e.g. the system can handle users with as low as a few to multi-multi million node subscriptions (think Facebook or Twitter)
-* Node ["**Friendship**"](/agnicore/agni/blob/master/src/Agni.Social/Graph/IGraphFriendSystem.cs)
-* [**Comment system**](/agnicore/agni/blob/master/src/Agni.Social/Graph/IGraphCommentSystem.cs) - voting like/dislike. Comments, Questions, Answers, Moderation
-* [**Trending**](/agnicore/agni/tree/master/src/Agni.Social/Trending) - special-purpose OLAP engine [harvesting](/agnicore/agni/blob/master/src/Agni.Social/Trending/SocialTrendingGauge.cs), [storing](/agnicore/agni/blob/master/src/Agni.Social/Trending/ITrendingSystem.cs#L27) and [querying data](/agnicore/agni/blob/master/src/Agni.Social/Trending/ITrendingSystem.cs#L39) in real time, "top prodyucts in xyz category in the past week/month/year" etc.
+* [**Social Graph Node**](src/Agni.Social/Graph) - cluster database solution for storing business entities (e.g. "friends", "groups", "rooms", "organizations" etc) and their relationships. The concrete systems provide [**GraphHost**](src/Agni.Social/Graph/Server/GraphHost.cs) implementations which map graph nodes to concrete business entities
+* Graph [**node subscriptions**](src/Agni.Social/Graph/IGraphEventSystem.cs) and [**event delivery**](src/Agni.Social/Graph/Server/GraphHost.cs#L33) - done in the cloud, e.g. the system can handle users with as low as a few to multi-multi million node subscriptions (think Facebook or Twitter)
+* Node ["**Friendship**"](src/Agni.Social/Graph/IGraphFriendSystem.cs)
+* [**Comment system**](src/Agni.Social/Graph/IGraphCommentSystem.cs) - voting like/dislike. Comments, Questions, Answers, Moderation
+* [**Trending**](src/Agni.Social/Trending) - special-purpose OLAP engine [harvesting](src/Agni.Social/Trending/SocialTrendingGauge.cs), [storing](src/Agni.Social/Trending/ITrendingSystem.cs#L27) and [querying data](src/Agni.Social/Trending/ITrendingSystem.cs#L39) in real time, "top prodyucts in xyz category in the past week/month/year" etc.
 
 
 
