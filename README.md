@@ -4,7 +4,7 @@ Agni Cluster OS is a UNISTACK&reg; software platform for writing custom distribu
 
 Agni OS, is not just a library - it is a full stack framework(an **A**pplication **O**perating **S**ystem) for high scalability having all development done using **lean .NET** (free from 3rd parties)
 
-Per definition of UNISTACK&reg; ideology - all code is written in **C#** and **JavaScript** (some Web Admin UI tools) only. All base libraries are used in the same consistent way throught the code base. This project **only uses language and runtime features** which are **standard to the CLR and language itself**, as provided by primary Microsoft implementation.
+According to UNISTACK&reg; ideology - all code is written only in **C#** and **JavaScript** (used in some Web Admin UI tools). The same base libraries are used in the same consistent way throught the code base. This project **only uses language and runtime features** which are **standard to the CLR and language itself**, as provided by primary Microsoft implementation.
 
 ## Overview of Features
 
@@ -21,15 +21,15 @@ Per definition of UNISTACK&reg; ideology - all code is written in **C#** and **J
 * **Database Sharding Router** - splis data into range partitions and then shards - supports any RDBMS or NoSQL as leaf nodes backend
 * **Key-Value Cluster Database** with expiration
 
-Agni includes a modeule called **Agni.Social** which provides a backbone for writing custom systems like Twitter/Facebook and the like which have much "social logic. It is important to put a stress on scalability - the social component uses Agni sharding, Processes and Todos executed in a cluster to serve trully unlimited number of clients.
+Agni includes a module called [**Agni.Social**](agnicore/agni/tree/master/src/Agni.Social) - a core for custom systems like Twitter/Facebook which have much social network logic. It is important to mention  scalability - the social component uses Agni sharding, Processes and Todos executed in a cluster to serve a truly unlimited number of clients.
 
 Social features:
 
-* **Social Graph Node** - cluster database solution for storing business entities (e.g. "friends", "groups", "rooms", "organizations" etc) and their relationships. The concrete systems provide **SocialGraphHost** implementations which map graph nodes to concrete business entities
-* Graph **node subscriptions** and **event delivery** - done in the cloud, e.g. the system can handle users with as low as a few to multi-multi million node subscriptions (think Facebook or Twitter)
-* Node "Friendship"
-* **Comment system** - voting like/dislike. Comments, Questions, Answers, Moderation
-* **Trending** - special-purpose OLAP engine harvesting, storing and querying data in real time, "top prodyucts in xyz category in the past week/month/year" etc.
+* [**Social Graph Node**](/agnicore/agni/tree/master/src/Agni.Social/Graph) - cluster database solution for storing business entities (e.g. "friends", "groups", "rooms", "organizations" etc) and their relationships. The concrete systems provide [**GraphHost**](agnicore/agni/blob/master/src/Agni.Social/Graph/Server/GraphHost.cs) implementations which map graph nodes to concrete business entities
+* Graph [**node subscriptions**](agnicore/agni/blob/master/src/Agni.Social/Graph/IGraphEventSystem.cs) and [**event delivery**](agnicore/agni/blob/master/src/Agni.Social/Graph/Server/GraphHost.cs#L33) - done in the cloud, e.g. the system can handle users with as low as a few to multi-multi million node subscriptions (think Facebook or Twitter)
+* Node ["**Friendship**"](/agnicore/agni/blob/master/src/Agni.Social/Graph/IGraphFriendSystem.cs)
+* [**Comment system**](/agnicore/agni/blob/master/src/Agni.Social/Graph/IGraphCommentSystem.cs) - voting like/dislike. Comments, Questions, Answers, Moderation
+* [**Trending**](/agnicore/agni/tree/master/src/Agni.Social/Trending) - special-purpose OLAP engine [harvesting](/agnicore/agni/blob/master/src/Agni.Social/Trending/SocialTrendingGauge.cs), [storing](/agnicore/agni/blob/master/src/Agni.Social/Trending/ITrendingSystem.cs#L27) and [querying data](/agnicore/agni/blob/master/src/Agni.Social/Trending/ITrendingSystem.cs#L39) in real time, "top prodyucts in xyz category in the past week/month/year" etc.
 
 
 
