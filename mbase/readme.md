@@ -13,7 +13,14 @@ Metabase is a hierarchical data structure that gets mounted by every Agni OS pro
  all changes in the cluster setup, packages and configuration are always available.
 
 
-  The metabase is a read-only resource - no process can write to it (think .NET reflection), apps can only read system data by using a rich set of APIs (see the Reference section).
+<img src="/doc/img/metabank.svg">
+
+
+The metabase is a read-only resource - no process can write to it (think .NET reflection), apps can only read system data by using a rich set of APIs (see the Reference section).
+
+Metabase file system root mapped to a local dev folder via version control (e.g. SVN): 
+
+<img src="/doc/img/metabase-files.png">
 
 Agni OS is designed to scale into a multi-million node range, consequently its metadata source must be "big" enough to handle many entities, on the other hand the metabase is loaded by every process and we can not afford to preload lots of data structures into every process upon start, therefore metabase uses lazy-loading patterns with extensive caching on multiple levels. For example, when a program needs to make a service call to some remote host, it first needs to locate this host in the system, check if the host is dynamic, resolve it’s address etc. The system may also consider multiple hosts that can perform the service, in which case multiple metabase catalogs and sections may be accessed. If the process repeats, the data gets read from the in-memory cache. 
 
@@ -58,7 +65,12 @@ The AMM tool is executed before metabase changes get committed into the version 
 ## Regional (Geo) Catalog
 Regional catalog define the physical and logical topology of the Agni OS instance. It starts from `Region` sections defined in directories with `"*.r"` extension. Every region may have sub-regions and NOCs.
 
+<img src="/doc/img/cluster-map.svg">
+
 A NOC stands for **"Network Operation Center"**, represented by directories with `"*.noc"` extension. NOCs are further broken into `Zones` `"*.z"` and sub-zones - zones within zones. Zones contain hosts - `"*.h"` directories. 
+
+
+<img src="/doc/img/cluster-topology.svg">
 
 Here is an example branch of regional catalog:
 
