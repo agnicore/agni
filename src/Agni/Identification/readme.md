@@ -100,3 +100,5 @@ These are more of a low-level ways of obtaining GDIDs and should be rarely used,
     ...
   }
 ```
+
+<img src="doc/img/agdida.svg">
