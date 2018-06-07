@@ -1,6 +1,8 @@
 # Agni Cluster OS
 
-Agni Cluster OS is a UNISTACK&reg; software platform for writing custom distributed, **SaaS**, and **PaaS** solutions. The sharp focus is kept on **business-oriented systems** which have much domain logic/messages/services/contracts and other rules.
+Agni Cluster OS is a UNISTACK&reg; software platform for writing custom **distributed**, **SaaS**, and **PaaS** solutions. The sharp focus is kept on **business-oriented systems** which have much domain logic/messages/services/contracts and other rules.
+
+<img src="/doc/img/cluster-map.svg">
 
 Agni OS, is not just a library - it is a full stack framework(an **A**pplication **O**perating **S**ystem) for high scalability having all development done using **lean .NET** (free from 3rd parties)
 
