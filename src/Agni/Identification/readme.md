@@ -75,9 +75,7 @@ GDIDs are generated within logical ‘Scopes’ and ‘Sequences’ and are uniq
 A consumer of GDIDs obtains them via a [`GDIDGenerator`](GDIDGenerator.cs) instance. AgniOS exposes a global GDID generation service to any app: 
 
 ```CSharp
-  /// 
-  /// References distributed GDID provider
-  /// 
+  /// <summary> References distributed GDID provider </summary>
   public static IGDIDProvider GDIDProvider { get; }
 ```
 
@@ -86,12 +84,14 @@ Used like this:
 var gdid = AgniSystem.GDIDProvider.GenerateOneGDID("My Namespace", "Sequence A");
 ```
 
+The provider will automatically select a **closest authority** to the host which originates the call, and **retry** on the next closest authority if the first call fails. GDIDProvider also caches the ID block and **adjusts the block size** dynamically - so if the process consumes an ID infrequently the system will allocate a few IDs, if the consumption picks up the IDGenerator will ask for **larger blocks** - to make less calls. GDIDGenerator **replenishes blocks asynchronously** - when the block depletes below LWM (low water mark) level. 
+
+**ID leaks are expected**, for example when process asks for IDs, system allocates a block of 10 IDs and then only uses a few, however this is normal and expected because of the dynamic block sizing it is unlikely that system gets large blocks and does not use them to the fullest.
+
 These are more of a low-level ways of obtaining GDIDs and should be rarely used, instead unique IDs are usually injected in a declarative fashion via attributes: 
 
 ```CSharp
-  ///<summary>
-  /// Represents User root record data
-  ///<summary>
+  ///<summary> Represents User root record data <summary>
   [Table(targetName: SysConsts.Myi_DS_MYSQL_TARGET, name: "tbl_user")]
   [UniqueSequence(SysConsts.MDB_AREA_USER, "user")] //<--- UNIQUE ID Sequence
   public sealed class UserRow : RowWithGdidPKAndInUse
