@@ -86,6 +86,10 @@ var gdid = AgniSystem.GDIDProvider.GenerateOneGDID("My Namespace", "Sequence A")
 
 The provider will automatically select a **closest authority** to the host which originates the call, and **retry** on the next closest authority if the first call fails. GDIDProvider also caches the ID block and **adjusts the block size** dynamically - so if the process consumes an ID infrequently the system will allocate a few IDs, if the consumption picks up the IDGenerator will ask for **larger blocks** - to make less calls. GDIDGenerator **replenishes blocks asynchronously** - when the block depletes below LWM (low water mark) level. 
 
+The following illustrates the GDID generation process: 
+
+<img src="/doc/img/agdida.svg">
+
 **ID leaks are expected**, for example when process asks for IDs, system allocates a block of 10 IDs and then only uses a few, however this is normal and expected because of the dynamic block sizing it is unlikely that system gets large blocks and does not use them to the fullest.
 
 These are more of a low-level ways of obtaining GDIDs and should be rarely used, instead unique IDs are usually injected in a declarative fashion via attributes: 
@@ -101,4 +105,3 @@ These are more of a low-level ways of obtaining GDIDs and should be rarely used,
   }
 ```
 
-<img src="/doc/img/agdida.svg">
