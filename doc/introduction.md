@@ -1,6 +1,6 @@
 # Introduction
 
-Back to [Documentation Index](readme.md)
+Back to [Documentation Index](./)
 
 
 ## Audience
@@ -53,15 +53,16 @@ Watch For|<ul> <li> Edge cases - indicate that something is wrong (i.e. many "IF
 Priorities|<ol><li>Reuse</li><li>Build using Agni</li><li>Use open source</li><li>Buy proprietary</li><ol>
 
 ## Points To Consider 
+
 There are a few important points that are usually overlooked.
 
-Why do we need distributed applications at all? If computers were infinitely scalable then would that have not sufficed for serving millions of users from a single box? It probably would, and the app dev paradigm could have stayed in the "client/server" age. But computational power of single units is finite, therefore we need to devise new ways of writing applications - that are architected in order to scale on many computers.
+Why do we need distributed applications at all? If computers were infinitely scalable then would that have not sufficed for serving millions of users from a single box? It probably would, and the app dev paradigm could have stayed in the "client/server" age. But computational power of single units is finite, therefore we need to devise **new ways of writing applications - that are architected in order to scale on many computers**.
 
-Now, let’s talk about IaaS. Many think that they are "in the cloud" because they install their XYZ software on AWS or Azure. While that may qualify you for "cloud", the software by itself is not scalable if it is not architected/implemented for scalability. The IaaS does not scale (i.e. your MS DOS programs) by itself, although you could spawn in on 100s of EC instances. This is not how Google is written. It is a time to scale your app architecture and then IaaS will naturally support it.
+Now, let’s talk about IaaS. Many think that they are "in the cloud" because they install their XYZ software on AWS or Azure. While that may qualify you for "cloud", **the software alone is not scalable if it is not architected/implemented for scalability**. The IaaS does not scale (e.g.  MS DOS programs) by itself, although you could spawn in on 100s of EC instances. This is not how Google is written. It is a time to **scale your application architecture** and then **IaaS will naturally support it**.
 
-Consider PaaS - it does make the particular service of interest scalable, but only that part of the service which is offered as a PaaS (for example a SQL database). An application, as a whole, is still not scalable completely if only some of its pieces are. Another problem is coupling. Once you start using some PaaS feature, you are now dependent on this service, and if you have not provided an abstraction - then you will not be able to replace that service provider at all. So the apps that rely on various PaaS offerings are better to be architected properly not to hard-link (even logically) with particular provider. Of course this may not be a problem if you purposely want to go with, say Amazon, Google or Microsoft forever. 
-
-
+Consider PaaS - it does make a particular service of interest scalable, but only that part of the service which is offered as a PaaS (for example a SQL database). An application, as a whole, is still not scalable completely if only some of its pieces are. Another problem is coupling. Once you start using some PaaS feature, you are **now dependent on this service**, and if you have **not provided an abstraction** - then you will not be able to replace that service provider at all. So the apps that rely on various PaaS offerings are better to be architected properly to avoid hard-coupling (even logically) with particular provider. Of course this may not be a problem if you purposely want to go with, say Amazon, Google or Microsoft forever. 
 
 
-Back to [Documentation Index](readme.md)
+
+
+Back to [Documentation Index](./)

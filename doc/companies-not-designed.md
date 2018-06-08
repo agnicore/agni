@@ -1,6 +1,6 @@
 # Why Companies Face Troubles 2 Years Down the Road?
 
-Back to [Documentation Index](readme.md)
+Back to [Documentation Index](./)
 
 Companies/startups choose languages like Python/Ruby or PHP because those languages have a convenient set of libraries allowing them to put some working sites in production very quickly. The problem, however, is that later, when the number of users increases and business requirements start to demand more intense logic, those solutions either fail or become very hard/expensive to maintain for number of reasons: 
 
@@ -26,4 +26,4 @@ Companies/startups choose languages like Python/Ruby or PHP because those langua
 
 
 
-Back to [Documentation Index](readme.md)
+Back to [Documentation Index](./)
