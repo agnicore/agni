@@ -3,7 +3,7 @@
 ## Application Services
 Agni OS provides a uniform feature set conducive to building distributed business applications, namely: 
 
-* **Application Container** - provides a uniform way of running and controlling application instances, standardizes features like: >
+* **Application Container** - provides a uniform way of running and controlling application instances, standardizes features like:
 
   * Application launch/shutdown cycle
   * Configuration (variable evaluation, structured overrides, macros, navigation)
