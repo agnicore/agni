@@ -8,7 +8,9 @@ Agni OS, is not just a library - it is a full stack framework(an **A**pplication
 
 According to UNISTACK&reg; ideology - all code is written only in **C#** and **JavaScript** (used in some Web Admin UI tools). The same base libraries are used in the same consistent way throught the code base. This project **only uses language and runtime features** which are **standard to the CLR and language itself**, as provided by primary Microsoft implementation.
 
-## Overview of Features
+[Documentation Index](/doc)
+
+## Feature Overview
 
 * **Hierarchy of geo-spread regions**, NOC, zones
 * **Host** and **zone** governor **supervisor processes**
@@ -58,7 +60,8 @@ NFX Builds on:
 * Windows / MSBuild 15 / VS 2017
 * in process - *nix (need scripts and build process refinements)
 
-
+## Documentation
+[Documentation Index](/doc)
 
 
 
