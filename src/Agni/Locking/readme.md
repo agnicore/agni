@@ -26,15 +26,17 @@ Suppose a server handles 20 req/sec - if this rate sustains for a few seconds, t
 
 > *Many high-scalability architectures rely on the Paxos, Vector Clocks, Raft, Byzantine Fault Tolerance and other complex algorithms of achieving the consensus in the distributed systems. These methods are usually very complex to implement/test properly and they cause extra network traffic as required by multi-phase protocols. Our approach obviates the need to execute multi-phase (multiple) networking calls as the currency/uptime of the system may be asserted with a single call with acceptable degree of probability...*
 
-## Locking APIs
+## Locking Data Structures
 
-The locking/coordination structures are based on the named tables(called variables) with primary keys. The most typical locking operation is an attempt to insert a key in the table and get a key violation that would indicate that other process has already placed the record. The locking server executes transactions in the caller's session context which has an expiration lifespan. Shall a caller never roll-back the transactions/kill session, the server would delete ALL variable entries from its memory upon expiration. On a typical server machine with 8 Gb of RAM and 4 cores the locking server can support hundred of thousands of lock var entries executing over 200,000+ transactions a second. 
+The locking/coordination structures are based on the **named tables** *(called variables)* with primary keys. The most typical locking operation is an attempt to **insert a key in the table** and **get a key violation** that would indicate that other process has already placed the record. The locking server executes transactions in the caller's **session context which has an expiration lifespan**. Shall a caller never roll-back the transactions/kill session, the **server would delete ALL variable entries from its memory upon expiration**. On a typical server machine with 8 Gb of RAM and 4 cores the locking server can support hundred of thousands of lock var entries executing over 200,000+ transactions a second. 
 
-All **transactions are executed in a 100% serializable mode (one after another)** within a namespace. A server supports multiple namespaces, in which it creates/mutates variables.
+<img src="/doc/img/locking-ns.svg">
+
+All **transactions are executed in a 100% serializable mode** *(one after another)* within a namespace. A server supports multiple namespaces, in which it creates/mutates variables.
 
  A **transaction is a set of operations** *(organized as expression tree)* submitted to the lock server for execution. **Either all** operations succeed **or none** at all. The transaction operations are broadly classified as: `set`, `delete`, `read` and `logical` operators. 
 
-### Example
+## Example
 
  Example of complex locking in a medical data acquisition system:
 
