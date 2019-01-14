@@ -1,4 +1,8 @@
-# Agni Cluster OS
+# The Agni project has been [superseded by Azos Project https://github.com/azist/azos](https://github.com/azist/azos)
+<br>
+<br>
+
+## Agni Cluster OS
 
 Agni Cluster OS is a UNISTACK&reg; software platform for writing custom **distributed**, **SaaS**, and **PaaS** solutions. The sharp focus is kept on **business-oriented systems** which have much domain logic/messages/services/contracts and other rules.
 
